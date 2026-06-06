@@ -1,0 +1,97 @@
+Software Engineering
+
+The concept first appeared at a NATO conference in Germany in 1968 to handle a software crisis.
+
+The causes of the software crisis were linked to the increasing complexity of hardware and the software development process.
+
+The crisis manifested itself in several ways:
+
+Projects ran over budget
+Projects ran over time
+Software was inefficient
+Software was low quality
+Software often did not meet requirements
+Projects were unmanageable
+Code was difficult to maintain
+
+Source: https://en.wikipedia.org/wiki/Software_crisis
+
+Software Activities vs. Software Development Models
+
+Software activities are the tasks required to develop a software system.
+
+Common software activities include:
+
+Analysis
+Design
+Implementation
+Verification and validation, including testing
+Maintenance
+
+A software development model is an abstract representation of a process. It describes the process from a particular perspective.
+
+Basic software development models include:
+
+Waterfall
+Incremental
+Reuse-oriented software development
+
+Source: Sommerville, Software Engineering, 10th ed., Chapter 2
+
+Definition of Software Engineering
+
+Software engineering is concerned with theories, methods, and tools for professional software development.
+
+Comments in Python
+
+A one-line comment starts with:
+
+#
+
+Example:
+
+# This is a comment.
+
+Triple quotes can be used for multi-line strings or docstrings, but they are not the same as regular comments.
+
+Collatz Conjecture
+
+The Collatz process starts with a positive integer.
+
+If the number is even, divide it by 2.
+
+If the number is odd, multiply it by 3 and add 1.
+
+Repeat until reaching 1.
+
+Example sequence starting from 5:
+
+5 → 16 → 8 → 4 → 2 → 1
+
+Cycle length counts the number of terms in the sequence, including the starting number and 1.
+
+So the cycle length of 5 is 6.
+
+The cycle length of 10 is 7.
+
+Assertions
+
+Assertions are executable checks used to document assumptions that should always be true if the program is correct.
+
+They are useful for detecting programmer errors during development.
+
+When an assertion fails, Python raises an AssertionError and stops the program. The traceback shows useful debugging information, such as:
+
+- The filename
+- The function name
+- The line number
+- The expression where the failure occurred
+
+Important points about assertions:
+
+- Running Python with -O turns off all assert statements.
+- Assertions should not be used for normal testing; use unittest instead.
+- Assertions should not be used for handling user errors; use exceptions instead.
+- Assertions are best used to check internal assumptions that should never be false in correct code.
+
+When testing a program, you usually do not want the whole program to stop after one failed check. You want all tests to run and report results. Therefore, unit testing is better for testing code.
