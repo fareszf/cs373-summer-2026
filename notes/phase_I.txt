@@ -1,7 +1,7 @@
 In project #1, you'll work with two projects (or repos):
 
-public code repo: https://gitlab.com/fareszf/cs330e-collatz.git
-public test repo: https://gitlab.com/fareszf/cs330e-collatz-tests.git
+public code repo: https://gitlab.com/fareszf/cs373-collatz.git
+public test repo: https://gitlab.com/fareszf/cs373-collatz-tests.git
 
 In Phase #1 of the project, you need to understand the structure and relationships among the given files.
 Project structure:
