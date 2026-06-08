@@ -1,38 +1,38 @@
-unittest
+Python unittest
+Python’s unittest framework, in its simplest form, uses two main components: TestCase and main().
+How to use it:
 
-Python's unittest in its simplest form consists of the function main and the class TestCase. To use it:
+Import TestCase and main from the unittest module.
+Create a class that inherits from TestCase.
+Inside the class, define methods whose names start with "test".
+Add main() at the bottom of the file to run the tests.
 
-1. Import main and TestCase from unittest.
-2. Define a class that extends TestCase.
-3. Inside this class, create functions that start with 'test'.
-4. Run the tests by placing main() in your file, usually at the bottom.
+Notes:
 
-assertEqual() is one of many kinds of assertions that unittest provides.
+assertEqual() is one of many assertion methods available in unittest.
+self in Python serves a similar role to this in Java.
+Even if an assertion fails, unittest continues running the remaining tests.
+The usefulness of unit testing depends heavily on the quality of the test cases.
 
-Python's self is analogous to Java's this.
 
-A nice feature of Python's unittest is that even if an internal assertion fails, it will continue running all the tests.
+Coverage
+Coverage measures how much of your code is exercised by tests. It checks whether code is executed, not how well it is tested.
+Key options:
 
-The quality of the unit tests is essential to the usefulness of unit testing.
+--branch : Enables branch coverage (tracks decision paths like if statements and loops).
+-m       : Shows line numbers for missing (uncovered) code.
 
-The Python tool coverage measures how many lines of your code a unit test actually tests.
 
-coverage
+Coverage Output Explanation
+Stmts   : Number of executable statements (lines of code).
+Miss    : Statements not executed by tests.
+Branch  : Total number of possible branch paths.
+BrPart  : Partially covered branches (some paths not taken).
+Cover   : Overall coverage percentage, calculated as:
+      ((Stmts + Branch) - (Miss + (Branch - BrPart))) / (Stmts + Branch)
 
-Test coverage or code coverage measures the percentage of your code covered by tests. Coverage testing only checks whether a test is present; it does not assess the quality of the test.
+Meaning:
+Missing : Shows uncovered code:Line numbers = missed statements
 
-- --branch: Activates branch coverage. Without this option, only statement coverage is measured.
-- -m flag: Shows the line numbers of missing statements.
-
-Coverage output includes:
-
-- Stmts: Number of executable statements (lines of code that Python could run).
-- Miss: Statements that were not executed by the tests.
-- Branch: Total branch destinations — every possible jump that can leave a decision point (if, loop, and/or, match, etc.).
-- BrPart: Partial branches: branch destinations that were not taken (at least one path from that decision point is still missing).
-- Cover: Overall coverage percentage, calculated as
- [(Stmts + Branch) - (Miss + (Branch - BrPart))] / (Stmts + Branch).
-In words: executed opportunities ÷ total opportunities.
-- Missing:Lists the gaps: plain line numbers for missed statements, and lineA→lineB for untaken branch exits.
-
-For more information, refer to: https://coverage.readthedocs.org
+More info:
+https://coverage.readthedocs.org
