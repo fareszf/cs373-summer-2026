@@ -1,0 +1,138 @@
+# Decorators in Python
+# ====================
+
+# A decorator is a function that:
+# - Takes another function as an argument
+# - Adds some kind of functionality
+# - Returns a new function
+# - WITHOUT modifying the original function’s source code
+
+# -------------------------------------------------------
+# Basic Example of a Decorator
+# -------------------------------------------------------
+
+def decorator_function(original_function):
+    def wrapper_function():
+        print('wrapper executed this before display')
+        return original_function()
+    return wrapper_function
+
+@decorator_function  # Equivalent to: display = decorator_function(display)
+def display():
+    print('display function ran')
+
+display()
+
+# Output:
+# wrapper executed this before display
+# display function ran
+
+# -------------------------------------------------------
+# Note:
+# When stacking decorators, the one closest to the function (lower one) is executed first.
+
+# -------------------------------------------------------
+# Why Use Decorators?
+# -------------------------------------------------------
+# Decorators help us:
+# - Add functionality to existing functions
+# - Without changing the original function code
+# - By wrapping them inside another function
+
+# -------------------------------------------------------
+# Functional Decorator Example
+# -------------------------------------------------------
+
+def post_gtz(f):
+    def g(n):
+        v = f(n)
+        assert v > 0
+        return v
+    return g
+
+# ---------------------------------------
+# Explanation:
+#
+# post_gtz is a higher-order function.
+# It takes a function 'f' and returns a new function 'g'.
+#
+# The returned function 'g' does the following:
+# - Calls 'f(n)' and stores the result in 'v'
+# - Asserts that 'v' is greater than 0
+# - Returns 'v'
+#
+# Think of 'g' as a wrapper around 'f' that adds
+# a postcondition: the result of f(n) must be > 0.
+#
+# If the condition fails, an AssertionError is raised.
+#
+# This pattern is useful for enforcing constraints on
+# function outputs without modifying the original function.
+# ---------------------------------------
+
+# -------------------------------------------------------
+# Decorator with Caching (cache_1 and cache_2)
+# -------------------------------------------------------
+
+cache_1 and cache_2
+--------------------
+
+DecoratorsT.py contains test cases demonstrating how to build a cache
+to store cycle lengths (or any function outputs).
+
+There are two cache implementations:
+
+1. cache_1: A function-based decorator
+2. cache_2: A class-based callable object
+
+--------------------
+cache_1
+--------------------
+
+cache_1 receives a function `f` and returns a new function `g`.  
+It uses a dictionary `d` to store results (the cache).
+
+Every time `cache_1(f)` is called:
+- A new dictionary `d` is created.
+- A new function `g` is created.
+- This `g` acts as a wrapper around `f` and maintains its own private cache.
+
+Example implementation:
+
+def cache_1(f):
+    d = {}
+    def g(n):
+        if n not in d:
+            d[n] = f(n)
+        return d[n]
+    return g
+
+--------------------
+cache_2
+--------------------
+
+cache_2 is a class-based alternative.  
+It stores both the original function (`self.f`) and a shared cache (`self.d`) in the instance.
+
+The special method `__call__` makes instances of cache_2 behave like functions.
+
+Example implementation:
+
+class cache_2:
+    def __init__(self, f):
+        self.f = f
+        self.d = {}
+
+    def __call__(self, n):
+        if n not in self.d:
+            self.d[n] = self.f(n)
+        return self.d[n]
+
+--------------------
+Notes:
+--------------------
+- Both versions cache the result of `f(n)` the first time `n` is passed.
+- On future calls with the same `n`, they return the cached result instead of recomputing it.
+- `cache_1` provides one cache per decoration.
+- `cache_2` provides a reusable cache object that persists across calls.
+
